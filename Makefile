@@ -28,5 +28,3 @@ install:
 .PHONY: verify_tooling
 verify_tooling:
 	$(eval $(call assert_env_variable,HOMEBREW, Brew is not installed))
-	
-	
