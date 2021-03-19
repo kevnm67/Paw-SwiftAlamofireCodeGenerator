@@ -1,8 +1,21 @@
+# Alamofire Code Generator (Paw Extension)
+
 [![Build Status](https://travis-ci.org/luckymarmot/Paw-SwiftAlamofireCodeGenerator.svg?branch=master)](https://travis-ci.org/luckymarmot/Paw-SwiftAlamofireCodeGenerator)
+[![Swift](https://img.shields.io/badge/Swift-5.4-orange.svg?style=flat)](https://developer.apple.com/swift/)
 
-# Swift + Alamofire Code Generator (Paw Extension)
+A [Paw Extension](https://paw.cloud/extensions/) that generates Swift 5 code for the [Alamofire 5.4.1](https://github.com/Alamofire/Alamofire) library.
 
-A [Paw Extension](https://paw.cloud/extensions/) that generates Swift 3 code for the [Alamofire 4.0](https://github.com/Alamofire/Alamofire) library.
+- [Installation](#installation)
+- [Development](#development)
+  - [Build & Install](#build--install)
+  - [Watch](#watch)
+  - [Tests](#tests)
+    - [Podfile](#podfile)
+    - [Build & Run Tests](#build--run-tests)
+    - [Build](#build)
+- [License](#license)
+- [Contributors](#contributors)
+- [Credits](#credits)
 
 ## Installation
 
@@ -17,6 +30,10 @@ npm install
 cake build
 cake install
 ```
+
+OR
+
+```make setup```
 
 ### Watch
 
@@ -68,5 +85,6 @@ See [Contributors](https://github.com/luckymarmot/Paw-SwiftAlamofireCodeGenerato
 
 ## Credits
 
-* [Mustache.js](https://github.com/janl/mustache.js/), also released under the MIT License
-* [URI.js](http://medialize.github.io/URI.js/), also released under the MIT License
+- [Alamofire](https://github.com/Alamofire/Alamofire)
+- [Mustache.js](https://github.com/janl/mustache.js/), also released under the MIT License
+- [URI.js](http://medialize.github.io/URI.js/), also released under the MIT License

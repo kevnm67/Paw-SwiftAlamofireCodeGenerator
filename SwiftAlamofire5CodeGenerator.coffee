@@ -19,7 +19,7 @@ slugify = (str) ->
             l.push(m[1].toUpperCase() + m[2].toLowerCase())
     return l.join('')
 
-SwiftAlamofireCodeGenerator = ->
+SwiftAlamofire5CodeGenerator = ->
     
     @url = (request) ->
         url_params_object = (() ->
@@ -143,11 +143,11 @@ SwiftAlamofireCodeGenerator = ->
     return
 
 
-SwiftAlamofireCodeGenerator.identifier =
-    "com.luckymarmot.PawExtensions.SwiftAlamofireCodeGenerator"
-SwiftAlamofireCodeGenerator.title =
-    "Swift (Alamofire)"
-SwiftAlamofireCodeGenerator.fileExtension = "swift"
-SwiftAlamofireCodeGenerator.languageHighlighter = "swift"
+SwiftAlamofire5CodeGenerator.identifier =
+    "com.luckymarmot.PawExtensions.SwiftAlamofire5CodeGenerator"
+SwiftAlamofire5CodeGenerator.title =
+    "Swift (Alamofire5)"
+SwiftAlamofire5CodeGenerator.fileExtension = "swift"
+SwiftAlamofire5CodeGenerator.languageHighlighter = "swift"
 
-registerCodeGenerator SwiftAlamofireCodeGenerator
+registerCodeGenerator SwiftAlamofire5CodeGenerator

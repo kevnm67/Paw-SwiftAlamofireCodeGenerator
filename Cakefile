@@ -3,10 +3,11 @@
 mkdirp = require 'mkdirp'
 fs = require 'fs'
 
-file = 'SwiftAlamofireCodeGenerator.coffee'
-identifier = 'com.luckymarmot.PawExtensions.SwiftAlamofireCodeGenerator'
+file = 'SwiftAlamofire5CodeGenerator.coffee'
+identifier = 'com.luckymarmot.PawExtensions.SwiftAlamofire5CodeGenerator'
 
-extensions_dir = "#{ process.env.HOME }/Library/Containers/com.luckymarmot.Paw/Data/Library/Application Support/com.luckymarmot.Paw/Extensions/"
+extensions_dir = "#{ process.env.HOME }/Library/Containers/Paw/Data/Library/Application\ Support/com.luckymarmot.Paw/Extensions/"
+extensions_dir_setapp = "#{ process.env.HOME }/Library/Containers/com.luckymarmot.Paw-setapp/Data/Library/Application\ Support/com.luckymarmot.Paw-setapp/Extensions/"
 build_root_dir = "build"
 build_dir = "#{ build_root_dir }/#{ identifier }"
 
@@ -14,7 +15,7 @@ build_dir = "#{ build_root_dir }/#{ identifier }"
 build_coffee = (callback) ->
     console.log "Building Coffee Scripts..."
 
-    coffee = exec "./node_modules/coffee-script/bin/coffee -c -o #{ build_dir } #{ file }"
+    coffee = exec "./node_modules/coffeescript/bin/coffee -c -o #{ file } #{ build_dir } "
     coffee.stderr.on 'data', (data) ->
         process.stderr.write data.toString()
     coffee.stdout.on 'data', (data) ->
@@ -34,6 +35,7 @@ build_copy = () ->
     fs.writeFileSync "#{ build_dir }/README.md", fs.readFileSync("./README.md")
     fs.writeFileSync "#{ build_dir }/LICENSE", fs.readFileSync("./LICENSE")
     fs.writeFileSync "#{ build_dir }/swift.mustache", fs.readFileSync("./swift.mustache")
+    fs.writeFileSync "#{ build_dir }/SwiftAlamofire5CodeGenerator.js", fs.readFileSync("./SwiftAlamofire5CodeGenerator.js")
     fs.writeFileSync "#{ build_dir }/mustache.js", fs.readFileSync("./node_modules/mustache/mustache.js")
     fs.writeFileSync "#{ build_dir }/URI.js", fs.readFileSync("./node_modules/URIjs/src/URI.js")
     fs.writeFileSync "#{ build_dir }/punycode.js", fs.readFileSync("./node_modules/URIjs/src/punycode.js")
@@ -57,13 +59,25 @@ build = (callback) ->
                 callback?()
 
 # install: copy files to Extensions directory
+install_setapp = (callback) ->
+    console.log "Copying files to setapp Extensions directory..."
+
+    ncp build_dir, "#{ extensions_dir_setapp }/#{ identifier }", (err) ->
+        if err
+            console.error " > FAILED: #{ err }"
+            process.exit(code=1)
+        else
+            console.log " > DONE"
+            callback?()
+
+# install: copy files to Extensions directory
 install = (callback) ->
     console.log "Copying files to Extensions directory..."
 
     ncp build_dir, "#{ extensions_dir }/#{ identifier }", (err) ->
         if err
-            console.error " > FAILED: #{ err }"
-            process.exit(code=1)
+            console.log " > Error trying setapp"
+            install_setapp()
         else
             console.log " > DONE"
             callback?()
@@ -99,7 +113,7 @@ archive = (callback) ->
 test = (callback) ->
     console.log "Building and Running Tests..."
 
-    child = exec "set -o pipefail && xcodebuild test -workspace './test/SwiftAlamofireCodeGenerator.xcworkspace' -scheme SwiftAlamofireCodeGeneratorTests | xcpretty -c"
+    child = exec "set -o pipefail && xcodebuild test -workspace './test/SwiftAlamofire5CodeGenerator.xcworkspace' -scheme SwiftAlamofire5CodeGeneratorTests | xcpretty -c"
     child.stderr.on 'data', (data) ->
         process.stderr.write data.toString()
     child.stdout.on 'data', (data) ->

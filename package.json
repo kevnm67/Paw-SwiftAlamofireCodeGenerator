@@ -2,13 +2,13 @@
   "name": "Paw-SwiftAlamofireCodeGenerator",
   "version": "1.2.0",
   "devDependencies": {
-    "coffee-script": "latest",
+    "coffeescript": "^2.5.1",
     "mkdirp": "~0.5.0",
     "ncp": "~1.0.1"
   },
   "dependencies": {
-    "URIjs": "latest",
-    "mustache": "~4.0.1"
+    "mustache": "~4.0.1",
+    "URIjs": "latest"
   },
   "repository": {
     "type": "git",
